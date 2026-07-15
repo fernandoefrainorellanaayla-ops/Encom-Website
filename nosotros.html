@@ -1,0 +1,91 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ENCOM - Nuestra Historia</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/nosotros.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-mobile">
+                <div class="logo-container">
+                    <img src="img/encom-logo.png" alt="ENCOM International" class="logo-encom">
+                </div>
+                <button class="hamburger-btn" id="hamburger-btn" aria-label="Abrir navegación">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+
+            <nav id="nav-menu">
+                <a href="index.html">Inicio</a>
+                <a href="sistemas.html">Sistemas</a>
+                <a href="nosotros.html" class="active">Nosotros</a>
+                <a href="contacto.html">Contacto</a>
+            </nav>
+        </header>
+
+        <main class="contenido-nosotros">
+            <section class="hero-nosotros">
+                <h1>EL LEGADO DE LA INNOVACIÓN DIGITAL</h1>
+                <p>Desde nuestros humildes orígenes en un garaje informático hasta convertirnos en la columna vertebral de la autopista de la información global.</p>
+            </section>
+            <section class="bloque-historia">
+                <div class="texto-historia">
+                    <span class="fecha">1982 — LA FUNDACIÓN</span>
+                    <h2>El nacimiento de un gigante</h2>
+                    <p>ENCOM comenzó como una pequeña empresa de desarrollo de software fundada con una visión clara: redefinir la interacción humana con los entornos virtuales. Con el lanzamiento de los primeros mainframes de procesamiento binario y simuladores analíticos, marcamos el inicio de la era de la computación comercial de alta densidad.</p>
+                </div>
+                <div class="imagen-historia">
+                    <img src="img/encom82.png" alt="Primeros laboratorios ENCOM">
+                </div>
+            </section>
+            <section class="bloque-historia invertido">
+                <div class="texto-historia">
+                    <span class="fecha">1989 — LA ERA DE ORO</span>
+                    <h2>El rediseño de "The Grid"</h2>
+                    <p>Bajo una dirección audaz, ENCOM se expandió hacia la industria del entretenimiento y la defensa digital descentralizada. La creación de algoritmos autónomos avanzados y sistemas operativos interconectados nos consolidó como líderes indiscutibles en infraestructura tecnológica mundial, pavimentando el camino para el software del nuevo milenio.</p>
+                </div>
+                <div class="imagen-historia">
+                    <img src="img/encom89.png" alt="Servidores centrales históricos">
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <div class="redes">
+                <a href="https://www.facebook.com/" target="_blank" aria-label="Facebook">
+                    <i class="fa-brands fa-square-facebook"></i>
+                </a>
+                <a href="https://www.instagram.com/" target="_blank" aria-label="Instagram">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+            </div>
+            <p>&copy; 2026 ENCOM Corp. Todos los derechos reservados.</p>
+        </footer>
+    </div>
+
+    <script>
+        const hamburgerBtn = document.getElementById('hamburger-btn');
+        const navMenu = document.getElementById('nav-menu');
+        const icon = hamburgerBtn.querySelector('i');
+
+        hamburgerBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            if (navMenu.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-xmark');
+            } else {
+                icon.classList.remove('fa-xmark');
+                icon.classList.add('fa-bars');
+            }
+        });
+    </script>
+</body>
+</html>
