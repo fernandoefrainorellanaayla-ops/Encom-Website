@@ -27,6 +27,7 @@
                 <a href="sistemas.html">Sistemas</a>
                 <a href="nosotros.html">Nosotros</a>
                 <a href="contacto.html" class="active">Contacto</a>
+                <a href="Portafolio/index.html">Portafolio</a>
             </nav>
         </header>
 
@@ -53,7 +54,8 @@
                     </div>
                 </div>
                 <div class="formulario-container">
-                    <form action="#" method="POST" class="formulario-encom">
+                    <!-- CORRECCIÓN: La etiqueta <form> ahora envuelve todo hasta abajo -->
+                    <form action="procesar_contacto.php" method="POST" class="formulario-encom">
                         <div class="grupo-campo">
                             <label for="nombre">Nombre Completo</label>
                             <input type="text" id="nombre" name="nombre" placeholder="Ej. Kevin Flynn" required>
@@ -66,7 +68,15 @@
                             <label for="mensaje">Mensaje / Solicitud</label>
                             <textarea id="mensaje" name="mensaje" rows="5" placeholder="Escriba los detalles de su transmisión aquí..." required></textarea>
                         </div>
-                        <button type="submit" class="btn-enviar">ENVIAR TRANSMISIÓN</button>
+                        <div class="botones-acciones" style="display: flex; gap: 15px; margin-top: 20px;">
+                            <button type="submit" class="btn-enviar" style="flex: 1;">
+                                <i class="fa-solid fa-envelope"></i> ENVIAR EMAIL
+                            </button>
+                            
+                            <button type="button" id="btn-whatsapp" style="flex: 1; background-color: #25D366; color: white; border: none; padding: 12px; font-weight: 600; cursor: pointer; border-radius: 4px; transition: 0.3s;">
+                                <i class="fa-brands fa-whatsapp"></i> ENVIAR AL WHATSAPP
+                            </button>
+                        </div>                    
                     </form>
                 </div>
             </section>
@@ -86,9 +96,11 @@
     </div>
 
     <script>
+        // --- LÓGICA DEL MENÚ MÓVIL ---
         const hamburgerBtn = document.getElementById('hamburger-btn');
         const navMenu = document.getElementById('nav-menu');
         const icon = hamburgerBtn.querySelector('i');
+        
         hamburgerBtn.addEventListener('click', () => {
             navMenu.classList.toggle('active');
             if (navMenu.classList.contains('active')) {
@@ -98,6 +110,29 @@
                 icon.classList.remove('fa-xmark');
                 icon.classList.add('fa-bars');
             }
+        });
+
+        // --- LÓGICA DE WHATSAPP ---
+        const btnWhatsapp = document.getElementById('btn-whatsapp');
+    
+        btnWhatsapp.addEventListener('click', () => {
+            const nombre = document.getElementById('nombre').value.trim();
+            const correo = document.getElementById('correo').value.trim();
+            const mensaje = document.getElementById('mensaje').value.trim();
+
+            if (!nombre || !mensaje) {
+                alert('Por favor, completa al menos tu Nombre y el Mensaje para enviar por WhatsApp.');
+                return; 
+            }
+
+            // CORRECCIÓN: El número debe ir sin el signo "+" y sin espacios para que la API de WhatsApp no de error.
+            const numeroTelefono = "50364215902"; 
+
+            const textoFormateado = `*NUEVA TRANSMISIÓN ENCOM*%0A%0A*Programa/Usuario:* ${nombre}%0A*Enlace de Retorno:* ${correo}%0A%0A*Mensaje:*%0A${mensaje}`;
+
+            const urlWhatsapp = `https://wa.me/${numeroTelefono}?text=${textoFormateado}`;
+
+            window.open(urlWhatsapp, '_blank');
         });
     </script>
 </body>
